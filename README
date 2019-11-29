@@ -1,0 +1,2 @@
+To start mongodb locally, run mongod --config /usr/local/etc/mongod.conf --fork.
+By default, the database instance runs on port 27017.
