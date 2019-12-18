@@ -48,11 +48,10 @@ module.exports = {
         const token = signToken(req.user);
         res.status(200).json({ token });
     },
-    googleOAuth: async(req, res, next) => {
-        // Generate token
-        console.log('req.user', req.user)
+    generateOAuth: async(req, res, next) => {
+        console.log('req.user', req.user);
         const token = signToken(req.user);
-        res.status(200).json({token});
+        res.status(200).json({ token });
     },
     secret: async (req, res, next) => {
         console.log('UsersController.secret called');
