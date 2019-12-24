@@ -10,17 +10,26 @@ import App from './components/App';
 import Home from './components/Home';
 import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
+import SignOut from './components/SignOut';
 import Dashboard from './components/Dashboard';
 import reducers from './Reducers';
 
+const jwtToken = localStorage.getItem('JWT_TOKEN');
+
 ReactDOM.render(
-    <Provider store={createStore(reducers, {}, applyMiddleware(reduxThunk))}>
+    <Provider store={createStore(reducers, {
+        auth: {
+            token: jwtToken,
+            isAuthenticated: jwtToken ? true : false
+        }
+    }, applyMiddleware(reduxThunk))}>
         <BrowserRouter>
             <App>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/dashboard" component={Dashboard} />
                 <Route exact path="/signin" component={SignIn} />
                 <Route exact path="/signup" component={SignUp} />
+                <Route exact path="/signout" component={SignOut} />
             </App>
         </BrowserRouter>
     </Provider>,
